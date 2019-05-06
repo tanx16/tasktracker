@@ -49,7 +49,7 @@
 		AC13BB992271A098006BE4CF /* ListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewCell.swift; sourceTree = "<group>"; };
 		AC7B05E822694F60003A59F6 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		AC824E9B227E7573006F24DC /* GaugeKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GaugeKit.xcodeproj; path = GaugeKit/GaugeKit.xcodeproj; sourceTree = "<group>"; };
-		AC824EB4227F8BC0006F24DC /* ShadowsIntoLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ShadowsIntoLight.ttf; sourceTree = SOURCE_ROOT; };
+		AC824EB4227F8BC0006F24DC /* ShadowsIntoLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = ShadowsIntoLight.ttf; path = TaskTracker/ShadowsIntoLight.ttf; sourceTree = SOURCE_ROOT; };
 		ACAA444B22682E02000D95CF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		ACAA444D22682E5B000D95CF /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		ACAA444F22682E95000D95CF /* ViewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTaskViewController.swift; sourceTree = "<group>"; };
