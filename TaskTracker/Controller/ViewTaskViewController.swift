@@ -32,7 +32,11 @@ class ViewTaskViewController: UITableViewController, CLLocationManagerDelegate {
         task = realm.object(ofType: Task.self, forPrimaryKey: taskIdentifier)
         nameTask.text = task!.name
         descriptionField.text = task!.taskDescription
-        frequencyLabel.text = "Every \(task!.frequency) Days"
+        if (task!.frequency > 1) {
+            frequencyLabel.text = "Every \(task!.frequency) Days"
+        } else {
+            frequencyLabel.text = "Every Day"
+        }
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
@@ -58,26 +62,26 @@ class ViewTaskViewController: UITableViewController, CLLocationManagerDelegate {
                     task?.updateStreak(increase: false)
                 }
                 profile.totalTasksDone += 1
-                if profile.updateExp(amount: task!.expOnCompletion()) {
-                    print("Leveled up!")
+                let totalExp = task!.expOnCompletion() * (profile.distanceFromTask(taskLoc: (task?.location)!) + 0.5)
+                if profile.updateExp(amount: totalExp) {
+                    alertCompletedTask(leveledUp: true, level: profile.level, expGained: totalExp)
+                } else {
+                    alertCompletedTask(leveledUp: false, level: profile.level, expGained: totalExp)
                 }
                 if shouldUpdateProfileStreak()  {
-                    print("ok")
-                    print(profile.lastStreak)
-                    print(Date())
                     if !Calendar.current.isDateInToday(profile.lastStreak) {
-                        print("ok!")
                         profile.dailyStreak += 1
                         profile.longestStreak = max(profile.dailyStreak, profile.longestStreak)
                         profile.lastStreak = Date()
                     }
                 } else {
-                    print("hmm")
                     profile.dailyStreak = 0
                 }
                 realm.add(profile, update: true)
             }
-            dismiss(animated: true, completion: nil)
+        }
+        else {
+            alertCannotComplete()
         }
     }
     
@@ -128,6 +132,29 @@ class ViewTaskViewController: UITableViewController, CLLocationManagerDelegate {
             }
         }
         return true
+    }
+    
+    private func alertCompletedTask(leveledUp: Bool, level: Int, expGained: Double) {
+        var message = ""
+        if leveledUp {
+            message = "Gained \(Int(expGained)) experience points. Level up! You are now level \(level)."
+        } else {
+            message = "Gained \(Int(expGained)) experience points."
+        }
+        
+        let alert = UIAlertController(title: "Completed Task!", message: message, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        
+        self.present(alert, animated: true)
+    }
+    
+    private func alertCannotComplete() {
+        let alert = UIAlertController(title: "Too far from task!", message: "Move closer to the task location.", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        
+        self.present(alert, animated: true)
     }
 
 }

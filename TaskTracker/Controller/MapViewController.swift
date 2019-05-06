@@ -25,7 +25,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //addSampleTasks()
+        addSampleTasks()
         mapView.delegate = self
         mapView.showsUserLocation = true
         mapView.showsCompass = false;
@@ -47,7 +47,7 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        refreshAnnotations()
+        refreshAnnotations(showAll: true)
     }
     
     private func clearAllTasks() {
@@ -61,7 +61,12 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         annotation.taskIdentifier = task.identifier
         annotation.coordinate = MapViewController.locToCoord(location: task.location!)
         annotation.title = task.name
-        annotation.subtitle = "Every \(task.frequency) days"
+        if (task.frequency > 1) {
+            annotation.subtitle = "Every \(task.frequency) days"
+        } else {
+            annotation.subtitle = "Every day"
+        }
+        
         mapView.addAnnotation(annotation)
     }
     
@@ -69,15 +74,21 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         clearAllTasks()
         if tasks.count == 0 {
             try! realm.write() {
-                let sampleTasks =
-                    ["Groceries", "School", "Get stuff", "Brush teeth", "Take out trash" ]
+                let sampleTasks: [(String, String)] =
+                    [("Get groceries", "Eggs\n veggies"),
+                     ("School", "iOS decal at 5:30"),
+                     ("Get stuff", "buy more dishwashing soap"),
+                     ("Meet with team", "finish app"),
+                     ("Exercise", "cardio time") ]
                 
                 for task in sampleTasks {
                     let newTask = Task()
-                    newTask.name = task
+                    newTask.name = task.0
+                    newTask.taskDescription = task.1
                     newTask.location = Location(latitude: 37.872048 +  Double.random(in: -0.003 ..< 0.003), longitude: -122.257833 + Double.random(in: -0.003 ..< 0.003))
                     newTask.frequency = Int.random(in: 1 ..< 7)
-                    
+                    newTask.completedCount = Int.random(in: 1 ..< 60)
+                    newTask.streak = Int.random(in: 1 ..< 20)
                     realm.add(newTask)
                 }
             }
@@ -91,9 +102,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         if (!locationSet) {
             let region = MKCoordinateRegion(center: locationManager.location!.coordinate, latitudinalMeters: 1500, longitudinalMeters: 1500)
             self.mapView.setRegion(region, animated: true)
+            
             profile = realm.object(ofType: Profile.self, forPrimaryKey: "userKey")
             if profile == nil {
                 profile = Profile(home: MapViewController.coordToLoc(coord: locationManager.location!.coordinate))
+                profile?.totalTasksDone = Int.random(in: 50 ..< 300)
                 try! realm.write {
                     realm.add(profile!)
                 }
@@ -103,7 +116,8 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation is MKUserLocation {
+        if let userlocation = annotation as? MKUserLocation {
+            userlocation.title = ""
             return nil
         }
         let reuseID = "pin"
@@ -150,7 +164,20 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     @IBAction func toggleDayTasks(_ sender: Any) {
         showAllTasks = !showAllTasks
-        if showAllTasks {
+        refreshAnnotations(showAll: showAllTasks)
+    }
+    
+    public static func locToCoord(location: Location) -> CLLocationCoordinate2D {
+        return CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+    }
+    
+    public static func coordToLoc(coord: CLLocationCoordinate2D) -> Location {
+        return Location(latitude: coord.latitude, longitude: coord.longitude)
+    }
+    
+    private func refreshAnnotations(showAll: Bool) {
+        mapView.removeAnnotations(mapView.annotations)
+        if showAll {
             shownTasks = tasks.map{$0}
         }
         else {
@@ -162,20 +189,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             }
             shownTasks = newTasks
         }
-        refreshAnnotations()
-    }
-    
-    public static func locToCoord(location: Location) -> CLLocationCoordinate2D {
-        return CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
-    }
-    
-    public static func coordToLoc(coord: CLLocationCoordinate2D) -> Location {
-        return Location(latitude: coord.latitude, longitude: coord.longitude)
-    }
-    
-    private func refreshAnnotations() {
-        mapView.removeAnnotations(mapView.annotations)
-        shownTasks = tasks.map{$0}
         for task in shownTasks {
             addAnnotation(task: task)
         }
@@ -189,6 +202,8 @@ class taskAnnotationView: MKPinAnnotationView {  // or nowadays, you might use M
     override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
         super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
         canShowCallout = true
+        pinTintColor = UIColor(displayP3Red: 205/255, green: 170/255, blue: 125/255, alpha: 1.0)
+        tintColor = UIColor(displayP3Red: 205/255, green: 170/255, blue: 125/255, alpha: 1.0)
         rightCalloutAccessoryView = UIButton(type: .infoLight)
     }
     

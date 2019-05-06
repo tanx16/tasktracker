@@ -9,8 +9,18 @@
 import UIKit
 import RealmSwift
 import CoreLocation
+import GaugeKit
 
 class ProfileViewController: UIViewController {
+    
+    @IBOutlet weak var mostTasksGauge: Gauge!
+    @IBOutlet weak var mostTasksLabel: UILabel!
+    @IBOutlet weak var longestDistGauge: Gauge!
+    @IBOutlet weak var longestDistLabel: UILabel!
+    @IBOutlet weak var totalTasksGauge: Gauge!
+    @IBOutlet weak var totalTasksLabel: UILabel!
+    @IBOutlet weak var longestStreakGauge: Gauge!
+    @IBOutlet weak var longestStreakLabel: UILabel!
     
     let realm = try! Realm()
     lazy var tasks: Results<Task> = { self.realm.objects(Task.self) }()
@@ -20,18 +30,47 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mostDoneTask.text = "Most done task: \(getMostDoneTask().name)"
+        mostDoneTask.text = "Most completed task: \(getMostDoneTask().name)"
         if profile.dailyStreak == 1 {
             currentDailyStreak.text = "Current daily streak: \(profile.dailyStreak) day"
         } else {
             currentDailyStreak.text = "Current daily streak: \(profile.dailyStreak) days"
         }
-
-        // Do any additional setup after loading the view.
+        setAchievements()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         viewDidLoad()
+    }
+    
+    private func setAchievements() {
+        let mostDoneCount = getMostDoneTask().completedCount
+        while mostDoneCount >= Int(mostTasksGauge.maxValue) {
+            mostTasksGauge.maxValue *= 5
+        }
+        mostTasksLabel.text = "\(mostDoneCount)/\(Int(mostTasksGauge.maxValue)) times"
+        mostTasksGauge.animateRate(2.0, newValue: CGFloat(mostDoneCount), completion: {_ in})
+        
+        let longestDistCount = longestDistance()
+        while longestDistCount >= Double(longestDistGauge.maxValue) {
+            longestDistGauge.maxValue *= 5
+        }
+        longestDistLabel.text = "\(Double(round(100*longestDistCount)/100))/\(Int(longestDistGauge.maxValue)) km"
+        longestDistGauge.animateRate(2.0, newValue: CGFloat(longestDistCount), completion: {_ in})
+        
+        let totalTaskCount = totalTasksDone()
+        while totalTaskCount >= Int(totalTasksGauge.maxValue) {
+            totalTasksGauge.maxValue *= 5
+        }
+        totalTasksLabel.text = "\(totalTaskCount)/\(Int(totalTasksGauge.maxValue)) tasks"
+        totalTasksGauge.animateRate(2.0, newValue: CGFloat(totalTaskCount), completion: {_ in})
+        
+        let longestStreakCount = longestStreak()
+        while longestStreakCount >= Int(longestStreakGauge.maxValue) {
+            longestStreakGauge.maxValue *= 5
+        }
+        longestStreakLabel.text = "\(longestStreakCount)/\(Int(longestStreakGauge.maxValue)) days"
+        longestStreakGauge.animateRate(2.0, newValue: CGFloat(longestStreakCount), completion: {_ in})
     }
     
     // MARK: - Achievemnts
@@ -48,7 +87,8 @@ class ProfileViewController: UIViewController {
         return maxTask
     }
     
-    // "A Long Walk" : Complete a task 1/5/10/100 miles away from home
+    // "A Long Walk" : Complete a task 1/5/10/100 km away from home
+    // Returns in km
     private func longestDistance() -> Double {
         var maxDistance: Double = -1
         let homeLoc = MapViewController.locToCoord(location: profile.home!)
@@ -59,7 +99,7 @@ class ProfileViewController: UIViewController {
                 maxDistance = distance
             }
         }
-        return maxDistance
+        return maxDistance/1000
     }
     
     // "Frequent User" : Do 50/500/5000 total tasks

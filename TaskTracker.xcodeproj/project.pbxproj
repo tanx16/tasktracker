@@ -10,6 +10,8 @@
 		A24490C94588E96409601B3D /* Pods_TaskTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8DE111232FEC38CC04321A /* Pods_TaskTracker.framework */; };
 		AC13BB9A2271A098006BE4CF /* ListViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC13BB992271A098006BE4CF /* ListViewCell.swift */; };
 		AC7B05E922694F60003A59F6 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7B05E822694F60003A59F6 /* Location.swift */; };
+		AC824EA4227E75B7006F24DC /* GaugeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC824EA1227E7573006F24DC /* GaugeKit.framework */; };
+		AC824EB5227F8BC0006F24DC /* ShadowsIntoLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC824EB4227F8BC0006F24DC /* ShadowsIntoLight.ttf */; };
 		ACAA444C22682E02000D95CF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA444B22682E02000D95CF /* ProfileViewController.swift */; };
 		ACAA444E22682E5B000D95CF /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA444D22682E5B000D95CF /* ListViewController.swift */; };
 		ACAA445022682E95000D95CF /* ViewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAA444F22682E95000D95CF /* ViewTaskViewController.swift */; };
@@ -24,11 +26,30 @@
 		ACE64E582250944A00962CDF /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE64E572250944A00962CDF /* Profile.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		AC824EA0227E7573006F24DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC824E9B227E7573006F24DC /* GaugeKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1C9404D01B31CF85001BF122;
+			remoteInfo = GaugeKit;
+		};
+		AC824EA2227E7573006F24DC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC824E9B227E7573006F24DC /* GaugeKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1C9404DB1B31CF85001BF122;
+			remoteInfo = GaugeKitTests;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		4619EFCFCE89F0B97CC1EE35 /* Pods-TaskTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskTracker.debug.xcconfig"; path = "Target Support Files/Pods-TaskTracker/Pods-TaskTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		730999C7767F0D3A9F2AC27E /* Pods-TaskTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TaskTracker.release.xcconfig"; path = "Target Support Files/Pods-TaskTracker/Pods-TaskTracker.release.xcconfig"; sourceTree = "<group>"; };
 		AC13BB992271A098006BE4CF /* ListViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewCell.swift; sourceTree = "<group>"; };
 		AC7B05E822694F60003A59F6 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		AC824E9B227E7573006F24DC /* GaugeKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GaugeKit.xcodeproj; path = GaugeKit/GaugeKit.xcodeproj; sourceTree = "<group>"; };
+		AC824EB4227F8BC0006F24DC /* ShadowsIntoLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ShadowsIntoLight.ttf; sourceTree = SOURCE_ROOT; };
 		ACAA444B22682E02000D95CF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		ACAA444D22682E5B000D95CF /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		ACAA444F22682E95000D95CF /* ViewTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewTaskViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC824EA4227E75B7006F24DC /* GaugeKit.framework in Frameworks */,
 				A24490C94588E96409601B3D /* Pods_TaskTracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,6 +87,15 @@
 				730999C7767F0D3A9F2AC27E /* Pods-TaskTracker.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		AC824E9C227E7573006F24DC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AC824EA1227E7573006F24DC /* GaugeKit.framework */,
+				AC824EA3227E7573006F24DC /* GaugeKitTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		ACAA444222682D17000D95CF /* Controller */ = {
@@ -85,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				ACDAF7272241C22C0017FFD5 /* TaskTracker */,
+				AC824E9B227E7573006F24DC /* GaugeKit.xcodeproj */,
 				ACDAF7262241C22C0017FFD5 /* Products */,
 				2BD699E5B014B5B80DE0482D /* Pods */,
 				D19216A1BE738E11AC83773F /* Frameworks */,
@@ -107,6 +139,7 @@
 				ACDAF7282241C22C0017FFD5 /* AppDelegate.swift */,
 				ACDAF72C2241C22C0017FFD5 /* Main.storyboard */,
 				ACDAF72F2241C22D0017FFD5 /* Assets.xcassets */,
+				AC824EB4227F8BC0006F24DC /* ShadowsIntoLight.ttf */,
 				ACDAF7312241C22D0017FFD5 /* LaunchScreen.storyboard */,
 				ACDAF7342241C22D0017FFD5 /* Info.plist */,
 			);
@@ -179,12 +212,35 @@
 			mainGroup = ACDAF71C2241C22C0017FFD5;
 			productRefGroup = ACDAF7262241C22C0017FFD5 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = AC824E9C227E7573006F24DC /* Products */;
+					ProjectRef = AC824E9B227E7573006F24DC /* GaugeKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				ACDAF7242241C22C0017FFD5 /* TaskTracker */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		AC824EA1227E7573006F24DC /* GaugeKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GaugeKit.framework;
+			remoteRef = AC824EA0227E7573006F24DC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		AC824EA3227E7573006F24DC /* GaugeKitTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = GaugeKitTests.xctest;
+			remoteRef = AC824EA2227E7573006F24DC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		ACDAF7232241C22C0017FFD5 /* Resources */ = {
@@ -194,6 +250,7 @@
 				ACDAF7332241C22D0017FFD5 /* LaunchScreen.storyboard in Resources */,
 				ACDAF7302241C22D0017FFD5 /* Assets.xcassets in Resources */,
 				ACDAF72E2241C22C0017FFD5 /* Main.storyboard in Resources */,
+				AC824EB5227F8BC0006F24DC /* ShadowsIntoLight.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,11 @@
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="ShadowsIntoLight.ttf">
+            <string>ShadowsIntoLight</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--MapView-->
         <scene sceneID="tne-QT-ifu">
@@ -22,45 +27,77 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ug8-ei-Eh9" userLabel="MapView">
                                 <rect key="frame" x="0.0" y="-19.666666666666686" width="375" height="812.33333333333348"/>
                             </mapView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="KRb-hI-Kuz">
-                                <rect key="frame" x="335" y="44" width="30" height="90"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="KRb-hI-Kuz">
+                                <rect key="frame" x="335" y="44" width="30" height="62.666666666666657"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XoK-F2-WEY">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XoK-F2-WEY">
                                         <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                        <state key="normal" title="+"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="Y34-Cc-esH"/>
+                                            <constraint firstAttribute="height" constant="30" id="bfm-ld-M2Q"/>
+                                        </constraints>
+                                        <state key="normal" title="Add Task" image="add"/>
                                         <connections>
                                             <segue destination="ZgJ-DL-DwF" kind="presentation" id="g2z-EQ-SVR"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kac-Qc-VU9">
-                                        <rect key="frame" x="0.0" y="30" width="30" height="30"/>
-                                        <state key="normal" title="➤"/>
-                                        <connections>
-                                            <action selector="centerLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GaQ-0d-fdH"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0X-wg-S8g">
-                                        <rect key="frame" x="0.0" y="60" width="30" height="30"/>
-                                        <state key="normal" title="☼"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nEx-a2-HXc">
+                                        <rect key="frame" x="0.0" y="40" width="30" height="22.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="ShadowsIntoLight" family="Shadows Into Light" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kac-Qc-VU9">
+                                <rect key="frame" x="330" y="684" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="dcw-HP-vpi"/>
+                                    <constraint firstAttribute="width" constant="30" id="hgb-9e-zf3"/>
+                                </constraints>
+                                <state key="normal" image="navigation"/>
+                                <connections>
+                                    <action selector="centerLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GaQ-0d-fdH"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="wCL-OP-bed">
+                                <rect key="frame" x="16" y="44" width="30" height="60.666666666666664"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P0X-wg-S8g">
+                                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Jfc-z8-3v9"/>
+                                            <constraint firstAttribute="width" constant="30" id="fEM-cQ-r2W"/>
+                                        </constraints>
+                                        <state key="normal" image="calendar"/>
                                         <connections>
                                             <action selector="toggleDayTasks:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wkm-Jd-vxF"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YYX-lV-CnC">
+                                        <rect key="frame" x="0.0" y="38" width="30" height="22.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="ShadowsIntoLight" family="Shadows Into Light" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kac-Qc-VU9" secondAttribute="bottom" constant="15" id="Cga-B3-piu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="KRb-hI-Kuz" secondAttribute="top" id="G3p-As-Rdk"/>
                             <constraint firstItem="ug8-ei-Eh9" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="OtE-8I-7iw"/>
                             <constraint firstItem="ug8-ei-Eh9" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="UHE-iG-lYt"/>
                             <constraint firstItem="ug8-ei-Eh9" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="dN6-lA-5lP"/>
                             <constraint firstItem="ug8-ei-Eh9" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="dmP-9k-59U"/>
+                            <constraint firstItem="kac-Qc-VU9" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-15" id="hgX-Yq-Q3m"/>
                             <constraint firstItem="KRb-hI-Kuz" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" constant="-10" id="u7s-tV-qLj"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Map" id="Dwp-uC-I6n" userLabel="MapView"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="map" id="Dwp-uC-I6n" userLabel="MapView"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="mapView" destination="ug8-ei-Eh9" id="yJt-qs-bGu"/>
@@ -75,14 +112,15 @@
         <scene sceneID="EjO-I3-wQI">
             <objects>
                 <tableViewController id="NI4-OQ-ALG" customClass="ViewTaskViewController" customModule="TaskTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Gys-GP-kfe">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Gys-GP-kfe">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.99551069739999998" green="0.79083615539999996" blue="0.53960442539999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="separatorColor" red="0.46925634150000001" green="0.37664449210000001" blue="0.26445111630000001" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection headerTitle="Task Name" id="pZ7-Kq-kMt">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="Tka-l4-Jbw">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="44" id="Tka-l4-Jbw">
                                         <rect key="frame" x="0.0" y="55.333333333333343" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Tka-l4-Jbw" id="gAp-LF-UmO">
@@ -91,7 +129,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UMF-VT-7cU">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="ShadowsIntoLight" family="Shadows Into Light" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -103,12 +141,13 @@
                                                 <constraint firstItem="UMF-VT-7cU" firstAttribute="centerY" secondItem="gAp-LF-UmO" secondAttribute="centerY" id="uOX-mP-6N3"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.91254913810000005" green="0.72589981560000005" blue="0.49744269250000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Description" id="YDO-Ez-8ux">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="200" id="gkH-lm-0PX">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="200" id="gkH-lm-0PX">
                                         <rect key="frame" x="0.0" y="155.33333333333334" width="375" height="200.00000000000003"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gkH-lm-0PX" id="6A1-6R-VQ7">
@@ -116,25 +155,26 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qQ2-7y-V3i">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="199.66666666666666"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <rect key="frame" x="37.666666666666657" y="0.0" width="300" height="199.66666666666666"/>
+                                                    <color key="backgroundColor" red="0.91254913810000005" green="0.72589981560000005" blue="0.49744269250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="ShadowsIntoLight" family="Shadows Into Light" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="qQ2-7y-V3i" firstAttribute="centerY" secondItem="6A1-6R-VQ7" secondAttribute="centerY" id="5RC-HG-ewa"/>
                                                 <constraint firstItem="qQ2-7y-V3i" firstAttribute="height" secondItem="6A1-6R-VQ7" secondAttribute="height" id="VaR-OD-G0V"/>
-                                                <constraint firstItem="qQ2-7y-V3i" firstAttribute="width" secondItem="6A1-6R-VQ7" secondAttribute="width" id="f5f-k9-P96"/>
+                                                <constraint firstItem="qQ2-7y-V3i" firstAttribute="width" secondItem="6A1-6R-VQ7" secondAttribute="width" multiplier="0.8" id="f5f-k9-P96"/>
                                                 <constraint firstItem="qQ2-7y-V3i" firstAttribute="centerX" secondItem="6A1-6R-VQ7" secondAttribute="centerX" id="fbD-cD-Sop"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.91254913810000005" green="0.72589981560000005" blue="0.49744269250000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Frequency" id="AbF-0b-2Y5" userLabel="Frequency">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="oSe-YD-tCt">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="44" id="oSe-YD-tCt">
                                         <rect key="frame" x="0.0" y="411.33333333333337" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oSe-YD-tCt" id="9UO-aY-sE1">
@@ -143,9 +183,10 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aas-PD-rNC">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="backgroundColor" red="0.91254913810000005" green="0.72589981560000005" blue="0.49744269250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="ShadowsIntoLight" family="Shadows Into Light" pointSize="17"/>
                                                     <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
+                                                    <color key="highlightedColor" red="0.75687325000000005" green="0.60483366250000004" blue="0.41580647230000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
@@ -160,7 +201,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Last Done" id="PfK-sB-mER">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="6ly-nO-fWf">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="44" id="6ly-nO-fWf">
                                         <rect key="frame" x="0.0" y="511.33333333333337" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6ly-nO-fWf" id="a0P-L6-1H3">
@@ -169,8 +210,9 @@
                                             <subviews>
                                                 <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mae-PF-fmt" userLabel="Date">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                                    <color key="backgroundColor" red="0.91254913810000005" green="0.72589981560000005" blue="0.49744269250000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="ShadowsIntoLight" family="Shadows Into Light" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
@@ -186,7 +228,7 @@
                             </tableViewSection>
                             <tableViewSection id="IRh-pX-evZ">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="vvB-Od-GHv">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="44" id="vvB-Od-GHv">
                                         <rect key="frame" x="0.0" y="591.33333333333337" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vvB-Od-GHv" id="XBz-Ca-vby">
@@ -194,8 +236,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X2B-iq-w2V">
-                                                    <rect key="frame" x="133" y="7" width="109" height="30"/>
-                                                    <state key="normal" title="Mark as Started"/>
+                                                    <rect key="frame" x="128" y="2" width="119" height="40"/>
+                                                    <fontDescription key="fontDescription" name="ShadowsIntoLight" family="Shadows Into Light" pointSize="17"/>
+                                                    <state key="normal" title="Mark as Completed"/>
                                                     <state key="selected" title="Mark as Completed"/>
                                                     <connections>
                                                         <action selector="completedTask:" destination="NI4-OQ-ALG" eventType="touchUpInside" id="dfS-KA-nrz"/>
@@ -207,6 +250,7 @@
                                                 <constraint firstItem="X2B-iq-w2V" firstAttribute="centerX" secondItem="XBz-Ca-vby" secondAttribute="centerX" id="HYx-P8-L3P"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.91254913810000005" green="0.72589981560000005" blue="0.49744269250000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -218,11 +262,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="View Task" id="qM5-cA-afP">
                         <barButtonItem key="leftBarButtonItem" systemItem="done" id="0Gh-fB-Rl7">
+                            <color key="tintColor" red="0.75687325000000005" green="0.60483366250000004" blue="0.41580647230000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="doneReturn:" destination="NI4-OQ-ALG" id="ztd-JM-qbr"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="CJV-07-Yj5">
+                            <color key="tintColor" red="0.75687325000000005" green="0.60483366250000004" blue="0.41580647230000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="editTask:" destination="NI4-OQ-ALG" id="9tV-OP-wID"/>
                             </connections>
@@ -255,53 +301,246 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DhN-aX-t3z">
-                                <rect key="frame" x="0.0" y="44" width="375" height="685"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DhN-aX-t3z">
+                                <rect key="frame" x="0.0" y="44" width="375" height="137"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Stats" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q7p-cY-ZIB">
-                                        <rect key="frame" x="148.33333333333334" y="0.0" width="78.666666666666657" height="20.333333333333332"/>
-                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
+                                        <rect key="frame" x="130.66666666666666" y="0.0" width="114" height="28.333333333333332"/>
+                                        <fontDescription key="fontDescription" name="ShadowsIntoLight" family="Shadows Into Light" pointSize="30"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Daily Streak:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JIx-nM-aOl">
-                                        <rect key="frame" x="108.33333333333333" y="28.333333333333329" width="158.33333333333337" height="20.333333333333329"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="120.33333333333333" y="36.333333333333329" width="134.66666666666669" height="28.333333333333329"/>
+                                        <fontDescription key="fontDescription" name="ShadowsIntoLight" family="Shadows Into Light" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Most Done Task:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ez-54-Wo6">
-                                        <rect key="frame" x="124" y="56.666666666666679" width="127.33333333333331" height="20.333333333333336"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="141.66666666666666" y="72.666666666666671" width="92" height="28"/>
+                                        <fontDescription key="fontDescription" name="ShadowsIntoLight" family="Shadows Into Light" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Achievements:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCf-k6-cGK" userLabel="Achievements:">
-                                        <rect key="frame" x="131.33333333333334" y="85" width="112.33333333333334" height="20.333333333333329"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Achievements" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCf-k6-cGK" userLabel="Achievements:">
+                                        <rect key="frame" x="134.33333333333334" y="108.66666666666666" width="106.33333333333334" height="28.333333333333343"/>
+                                        <fontDescription key="fontDescription" name="ShadowsIntoLight" family="Shadows Into Light" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iam-k2-3b7">
-                                        <rect key="frame" x="159" y="113.33333333333331" width="57" height="571.66666666666674"/>
-                                        <state key="normal" title="Settings"/>
-                                    </button>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="QlF-ER-JtE">
+                                <rect key="frame" x="0.0" y="181" width="375" height="548"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="3YT-Og-4Xj">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="137"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kdM-V9-oDP" customClass="Gauge" customModule="GaugeKit">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="96.666666666666671"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                        <color key="value" red="0.46925634150000001" green="0.37664449210000001" blue="0.26445111630000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                        <color key="value" red="0.46925634150000001" green="0.37664449210000001" blue="0.26445111630000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="gaugeTypeInt">
+                                                        <integer key="value" value="0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="rotate">
+                                                        <integer key="value" value="0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isCircle" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="rate">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1wa-Wi-3G3">
+                                                <rect key="frame" x="0.0" y="96.666666666666686" width="375" height="13"/>
+                                                <fontDescription key="fontDescription" name="ShadowsIntoLight" family="Shadows Into Light" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Most completed task count" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dDt-QL-f8p">
+                                                <rect key="frame" x="0.0" y="109.66666666666669" width="375" height="27.333333333333343"/>
+                                                <fontDescription key="fontDescription" name="ShadowsIntoLight" family="Shadows Into Light" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="AEe-PW-mjj">
+                                        <rect key="frame" x="0.0" y="137" width="375" height="137"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a0l-gP-eiK" customClass="Gauge" customModule="GaugeKit">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="96.666666666666671"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="gaugeTypeInt">
+                                                        <integer key="value" value="0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="rotate">
+                                                        <integer key="value" value="0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isCircle" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="rate">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                        <real key="value" value="1"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                        <color key="value" red="0.46925634150000001" green="0.37664449210000001" blue="0.26445111630000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                        <color key="value" red="0.46925634150000001" green="0.37664449210000001" blue="0.26445111630000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="drG-AW-vPy">
+                                                <rect key="frame" x="0.0" y="96.666666666666686" width="375" height="13"/>
+                                                <fontDescription key="fontDescription" name="ShadowsIntoLight" family="Shadows Into Light" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Furthest task completed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="orr-D3-MmU">
+                                                <rect key="frame" x="0.0" y="109.66666666666669" width="375" height="27.333333333333343"/>
+                                                <fontDescription key="fontDescription" name="ShadowsIntoLight" family="Shadows Into Light" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nkL-kM-Dkx">
+                                        <rect key="frame" x="0.0" y="274" width="375" height="137"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q6p-R8-aHX" customClass="Gauge" customModule="GaugeKit">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="96.666666666666671"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                        <color key="value" red="0.46925634150000001" green="0.37664449210000001" blue="0.26445111630000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                        <color key="value" red="0.46925634150000001" green="0.37664449210000001" blue="0.26445111630000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="gaugeTypeInt">
+                                                        <integer key="value" value="0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="rotate">
+                                                        <integer key="value" value="0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isCircle" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="rate">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JRr-KT-Yqu">
+                                                <rect key="frame" x="0.0" y="96.666666666666629" width="375" height="13"/>
+                                                <fontDescription key="fontDescription" name="ShadowsIntoLight" family="Shadows Into Light" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total tasks completed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dpt-TW-aAz">
+                                                <rect key="frame" x="0.0" y="109.66666666666663" width="375" height="27.333333333333343"/>
+                                                <fontDescription key="fontDescription" name="ShadowsIntoLight" family="Shadows Into Light" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Vtq-To-Uwi">
+                                        <rect key="frame" x="0.0" y="411" width="375" height="137"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qY8-d3-VoU" customClass="Gauge" customModule="GaugeKit">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="96.666666666666671"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                                        <color key="value" red="0.46925634150000001" green="0.37664449210000001" blue="0.26445111630000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                                        <color key="value" red="0.46925634150000001" green="0.37664449210000001" blue="0.26445111630000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="gaugeTypeInt">
+                                                        <integer key="value" value="0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="rotate">
+                                                        <integer key="value" value="0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isCircle" value="YES"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="rate">
+                                                        <real key="value" value="0.0"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMH-WY-HgW">
+                                                <rect key="frame" x="0.0" y="96.666666666666629" width="375" height="13"/>
+                                                <fontDescription key="fontDescription" name="ShadowsIntoLight" family="Shadows Into Light" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Longest daily streak" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z9p-EC-dJW">
+                                                <rect key="frame" x="0.0" y="109.66666666666663" width="375" height="27.333333333333343"/>
+                                                <fontDescription key="fontDescription" name="ShadowsIntoLight" family="Shadows Into Light" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.95099771022796631" green="0.95462524890899658" blue="0.83081573247909546" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="DhN-aX-t3z" firstAttribute="centerY" secondItem="J7s-u3-74W" secondAttribute="centerY" id="Pcx-sD-90I"/>
-                            <constraint firstItem="DhN-aX-t3z" firstAttribute="height" secondItem="J7s-u3-74W" secondAttribute="height" id="bXe-4W-8hN"/>
+                            <constraint firstItem="QlF-ER-JtE" firstAttribute="centerX" secondItem="J7s-u3-74W" secondAttribute="centerX" id="Aij-Kg-nDK"/>
+                            <constraint firstItem="QlF-ER-JtE" firstAttribute="width" secondItem="J7s-u3-74W" secondAttribute="width" id="KkR-5n-3dl"/>
+                            <constraint firstItem="QlF-ER-JtE" firstAttribute="height" secondItem="J7s-u3-74W" secondAttribute="height" multiplier="0.8" id="SMP-VM-BRN"/>
+                            <constraint firstItem="DhN-aX-t3z" firstAttribute="height" secondItem="J7s-u3-74W" secondAttribute="height" multiplier="0.2" id="bXe-4W-8hN"/>
                             <constraint firstItem="DhN-aX-t3z" firstAttribute="width" secondItem="J7s-u3-74W" secondAttribute="width" id="fAS-7U-Ttn"/>
                             <constraint firstItem="DhN-aX-t3z" firstAttribute="centerX" secondItem="J7s-u3-74W" secondAttribute="centerX" id="oBr-s0-dcT"/>
+                            <constraint firstItem="DhN-aX-t3z" firstAttribute="top" secondItem="J7s-u3-74W" secondAttribute="top" id="r57-tB-HNU"/>
+                            <constraint firstItem="QlF-ER-JtE" firstAttribute="top" secondItem="DhN-aX-t3z" secondAttribute="bottom" id="rOO-6E-QYw"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="J7s-u3-74W"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" id="8fe-Ux-0KL" userLabel="ProfileView"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="user" id="8fe-Ux-0KL" userLabel="ProfileView"/>
                     <connections>
                         <outlet property="currentDailyStreak" destination="JIx-nM-aOl" id="gkX-qr-1zb"/>
+                        <outlet property="longestDistGauge" destination="a0l-gP-eiK" id="GfP-Vv-KgI"/>
+                        <outlet property="longestDistLabel" destination="drG-AW-vPy" id="hj9-by-hKp"/>
+                        <outlet property="longestStreakGauge" destination="qY8-d3-VoU" id="zjw-jL-Wha"/>
+                        <outlet property="longestStreakLabel" destination="qMH-WY-HgW" id="8U2-P4-34x"/>
                         <outlet property="mostDoneTask" destination="3ez-54-Wo6" id="7KC-dh-3EE"/>
+                        <outlet property="mostTasksGauge" destination="kdM-V9-oDP" id="7bu-r0-KQb"/>
+                        <outlet property="mostTasksLabel" destination="1wa-Wi-3G3" id="DdN-uL-emC"/>
+                        <outlet property="totalTasksGauge" destination="q6p-R8-aHX" id="fdN-DW-ItX"/>
+                        <outlet property="totalTasksLabel" destination="JRr-KT-Yqu" id="ca4-vx-KVj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xE3-MR-9Jm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -315,7 +554,8 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2U3-8n-5R6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.99551069739999998" green="0.79083615539999996" blue="0.53960442539999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="separatorColor" red="0.46925634150000001" green="0.37664449210000001" blue="0.26445111630000001" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="tableViewCell" textLabel="DB4-Zi-K2b" detailTextLabel="a33-16-ec4" rowHeight="44" style="IBUITableViewCellStyleValue1" id="Wec-fH-4Re" customClass="ListViewCell" customModule="TaskTracker" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
@@ -325,21 +565,22 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DB4-Zi-K2b">
-                                            <rect key="frame" x="16.000000000000004" y="11.999999999999998" width="33.333333333333336" height="20.333333333333332"/>
+                                            <rect key="frame" x="16.000000000000004" y="9.0000000000000018" width="41.333333333333336" height="25.666666666666668"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="ShadowsIntoLight" family="Shadows Into Light" pointSize="22"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="a33-16-ec4">
-                                            <rect key="frame" x="315" y="11.999999999999998" width="44" height="20.333333333333332"/>
+                                            <rect key="frame" x="308" y="10.999999999999998" width="51" height="23.333333333333332"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="ShadowsIntoLight" family="Shadows Into Light" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.99551069736480713" green="0.7908361554145813" blue="0.53960442543029785" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="j1E-fT-YEf" kind="presentation" identifier="listViewSegue" id="djq-XB-sxj"/>
                                 </connections>
@@ -350,7 +591,7 @@
                             <outlet property="delegate" destination="tv5-n4-ryN" id="qQI-Cx-qF9"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="List" id="8XS-RH-3bv" userLabel="ListView"/>
+                    <tabBarItem key="tabBarItem" title="List" image="list" id="8XS-RH-3bv" userLabel="ListView"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="listViewTableView" destination="2U3-8n-5R6" id="Gxy-GO-I9d"/>
@@ -367,7 +608,13 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="nkW-03-JkW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.46925634150000001" green="0.37664449210000001" blue="0.26445111630000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="selectedImageTintColor" red="0.91254913806915283" green="0.72589981555938721" blue="0.49744269251823425" alpha="1" colorSpace="calibratedRGB"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="unselectedItemTintColor">
+                                <color key="value" red="0.75687325000762939" green="0.60483366250991821" blue="0.41580647230148315" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="axm-4n-moy"/>
@@ -386,6 +633,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5Gg-z6-NJ9">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.46925634150000001" green="0.37664449210000001" blue="0.26445111630000001" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <connections>
                         <segue destination="ykQ-Af-jep" kind="relationship" relationship="rootViewController" id="rfZ-iG-wFY"/>
@@ -403,6 +651,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Xxv-Dw-mfI">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.46925634150000001" green="0.37664449210000001" blue="0.26445111630000001" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -417,10 +666,11 @@
         <scene sceneID="eK1-Tj-WEI">
             <objects>
                 <tableViewController id="08O-Ms-TZI" userLabel="Edit Task" customClass="EditTaskViewController" customModule="TaskTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Kcg-ys-Ywk">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Kcg-ys-Ywk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.99551069739999998" green="0.79083615539999996" blue="0.53960442539999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="separatorColor" red="0.46925634150000001" green="0.37664449210000001" blue="0.26445111630000001" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection headerTitle="Task Name" id="C7s-EV-ZXI">
                                 <cells>
@@ -434,7 +684,7 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Lk-kg-ud3" userLabel="nameTaskField">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="ShadowsIntoLight" family="Shadows Into Light" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
@@ -445,6 +695,7 @@
                                                 <constraint firstItem="2Lk-kg-ud3" firstAttribute="height" secondItem="8jJ-JR-P3s" secondAttribute="height" id="jsE-ph-7m2"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.91254913810000005" green="0.72589981560000005" blue="0.49744269250000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -459,8 +710,8 @@
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VPB-H3-huK">
                                                     <rect key="frame" x="18.666666666666657" y="0.0" width="337.66666666666674" height="199.66666666666666"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="backgroundColor" red="0.91254913810000005" green="0.72589981560000005" blue="0.49744269250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="ShadowsIntoLight" family="Shadows Into Light" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
@@ -471,20 +722,22 @@
                                                 <constraint firstItem="VPB-H3-huK" firstAttribute="height" secondItem="auw-eY-ZPh" secondAttribute="height" id="l3u-Hh-ouy"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.91254913810000005" green="0.72589981560000005" blue="0.49744269250000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Frequency" id="aHc-yV-muo">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="pID-Gs-2KJ">
-                                        <rect key="frame" x="0.0" y="411.33333333333337" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="pID-Gs-2KJ">
+                                        <rect key="frame" x="0.0" y="411.33333333333337" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pID-Gs-2KJ" id="J2g-X9-dfN">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPt-HH-FV7">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.666666666666671"/>
+                                                    <color key="backgroundColor" red="0.91254913810000005" green="0.72589981560000005" blue="0.49744269250000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </pickerView>
                                             </subviews>
                                             <constraints>
@@ -500,7 +753,7 @@
                             <tableViewSection id="GQL-pn-9PN" userLabel="Delete">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="44" id="NGe-6M-aYS">
-                                        <rect key="frame" x="0.0" y="491.33333333333337" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="547.33333333333337" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NGe-6M-aYS" id="SDa-Gm-b9l">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
@@ -508,6 +761,8 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xnH-0C-kM9">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                                    <color key="backgroundColor" red="0.91254913810000005" green="0.72589981560000005" blue="0.49744269250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="ShadowsIntoLight" family="Shadows Into Light" pointSize="17"/>
                                                     <color key="tintColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <state key="normal" title="Delete"/>
                                                     <connections>
@@ -533,11 +788,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Edit Task" id="A19-rG-DGt">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Fr6-Sh-ryj">
+                            <color key="tintColor" red="0.75687325000000005" green="0.60483366250000004" blue="0.41580647230000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancelReturn:" destination="08O-Ms-TZI" id="K1z-eF-lze"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="99D-Uz-1h9">
+                            <color key="tintColor" red="0.75687325000000005" green="0.60483366250000004" blue="0.41580647230000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="yV3-Fx-Clq" kind="unwind" unwindAction="unwindToViewTask:" id="qbJ-pR-pV3"/>
                             </connections>
@@ -552,16 +809,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o8q-lV-vOn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="yV3-Fx-Clq" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3778.4000000000001" y="-1023.3990147783252"/>
+            <point key="canvasLocation" x="3591" y="-1023"/>
         </scene>
         <!--New Task-->
         <scene sceneID="bMv-jk-igX">
             <objects>
                 <tableViewController id="ykQ-Af-jep" userLabel="New Task" customClass="NewTaskViewController" customModule="TaskTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="RPI-0i-sK5">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="RPI-0i-sK5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.99551069739999998" green="0.79083615539999996" blue="0.53960442539999998" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection headerTitle="Task Name" id="L7y-B0-eev">
                                 <cells>
@@ -575,7 +832,7 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sZ3-Ae-hi6" userLabel="nameTaskField">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                                     <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" name="ShadowsIntoLight" family="Shadows Into Light" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
@@ -586,6 +843,7 @@
                                                 <constraint firstItem="sZ3-Ae-hi6" firstAttribute="height" secondItem="xQG-YG-9VL" secondAttribute="height" id="hKd-ta-l2N"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.91254913810000005" green="0.72589981560000005" blue="0.49744269250000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -600,11 +858,12 @@
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AlJ-gd-4b8">
                                                     <rect key="frame" x="18.666666666666657" y="0.0" width="337.66666666666674" height="199.66666666666666"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="backgroundColor" red="0.91254913810000005" green="0.72589981560000005" blue="0.49744269250000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" name="ShadowsIntoLight" family="Shadows Into Light" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textView>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.91254913810000005" green="0.72589981560000005" blue="0.49744269250000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="AlJ-gd-4b8" firstAttribute="height" secondItem="V35-Tg-PqO" secondAttribute="height" id="0Vj-Np-E3r"/>
                                                 <constraint firstItem="AlJ-gd-4b8" firstAttribute="centerX" secondItem="V35-Tg-PqO" secondAttribute="centerX" id="2uL-Sm-ZcH"/>
@@ -617,15 +876,16 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Frequency" id="bPI-s4-tWe">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="tbE-dp-RVr">
-                                        <rect key="frame" x="0.0" y="411.33333333333337" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="100" id="tbE-dp-RVr">
+                                        <rect key="frame" x="0.0" y="411.33333333333337" width="375" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tbE-dp-RVr" id="vFW-Pd-zHX">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Pt-5x-kgO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="99.666666666666671"/>
+                                                    <color key="backgroundColor" red="0.91254913810000005" green="0.72589981560000005" blue="0.49744269250000001" alpha="1" colorSpace="calibratedRGB"/>
                                                 </pickerView>
                                             </subviews>
                                             <constraints>
@@ -646,11 +906,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="New Task" id="rbW-eD-HH9">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="GpZ-YP-39D">
+                            <color key="tintColor" red="0.75687325000000005" green="0.60483366250000004" blue="0.41580647230000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="cancelReturn:" destination="ykQ-Af-jep" id="8tL-JJ-V6B"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="fIk-1T-yVn">
+                            <color key="tintColor" red="0.75687325000000005" green="0.60483366250000004" blue="0.41580647230000001" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="Iqu-nz-aqN" kind="unwind" unwindAction="unwindToMapView:" id="Nch-iO-4sw"/>
                             </connections>
@@ -675,6 +937,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mBn-Gs-xYC">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.46925634150000001" green="0.37664449210000001" blue="0.26445111630000001" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -686,6 +949,14 @@
             <point key="canvasLocation" x="2836" y="-1023.3990147783252"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="add" width="33.604373931884766" height="33.604373931884766"/>
+        <image name="calendar" width="46.428211212158203" height="46.428211212158203"/>
+        <image name="list" width="22" height="22"/>
+        <image name="map" width="22" height="22"/>
+        <image name="navigation" width="41.327354431152344" height="41.327354431152344"/>
+        <image name="user" width="22" height="22"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="7RV-yn-24A"/>
     </inferredMetricsTieBreakers>

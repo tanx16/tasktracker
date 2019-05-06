@@ -7,35 +7,15 @@
 //
 
 import UIKit
-import CoreLocation
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
-    var locationManager = CLLocationManager()
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        if CLLocationManager.locationServicesEnabled() == true {
-            if CLLocationManager.authorizationStatus() == .restricted ||
-                CLLocationManager.authorizationStatus() == .denied ||
-                CLLocationManager.authorizationStatus() == .notDetermined {
-                locationManager.requestWhenInUseAuthorization()
-            }
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.startUpdatingLocation()
-        } else {
-            print("Please turn your location services on!")
-        }
         return true
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        lastLocation = locations.last!
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -62,20 +42,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
 
 }
-private var lastLocation: CLLocation? {
-    didSet {
-        locationCallback?(lastLocation!)
-        locationCallback = nil
-    }
-}
-
-private var locationCallback: ((CLLocation) -> Void)?
-
-func getLastLocation(callback: @escaping (CLLocation) -> Void) {
-    guard let location = lastLocation else {
-        locationCallback = callback
-        return
-    }
-    locationCallback!(location)
-}
-

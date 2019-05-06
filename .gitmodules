@@ -1,0 +1,3 @@
+[submodule "GaugeKit"]
+	path = GaugeKit
+	url = https://github.com/skywinder/GaugeKit.git

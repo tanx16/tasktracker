@@ -19,7 +19,7 @@ class Task: Object {
     @objc dynamic var lastDone = Date()
     @objc dynamic var location: Location?
     @objc dynamic var completedCount = 0
-    @objc dynamic var profile = UUID().uuidString
+    @objc dynamic var profile = UUID().uuidString // Unused
     @objc dynamic var identifier = UUID().uuidString
     
     convenience init(name: String, taskDescription: String, frequency: Int, duration: Int, location: Location) {
@@ -41,7 +41,7 @@ class Task: Object {
     
     // TODO: Create approximate radius for detection
     func isAtLocation(currLocation: Location) -> Bool {
-        let epsilon = 0.005
+        let epsilon = 0.001
         return fabs(currLocation.latitude - location!.latitude) <= epsilon && fabs(currLocation.longitude - location!.longitude) <= epsilon
     }
     
@@ -54,9 +54,9 @@ class Task: Object {
         }
     }
     
-    // Todo: Make function dependent on streak/distance
+    // Todo: Make function dependent on distance
     func expOnCompletion() -> Double {
-        return 42
+        return (50 + Double(streak)*1.5)
     }
     
     func isOnStreak() -> Bool {
@@ -66,9 +66,7 @@ class Task: Object {
     }
     
     func isDueToday() -> Bool {
-        let dueDate = Calendar.current.date(byAdding: .day, value: frequency, to: lastDone)
-        print("Due: \(dueDate!)")
-        print("Today: \(Date())")
+        let dueDate = Calendar.current.date(byAdding: .day, value: frequency-1, to: lastDone)
         return Calendar.current.isDateInToday(dueDate!)
     }
 }

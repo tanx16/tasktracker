@@ -48,8 +48,14 @@ class Profile: Object {
             self.exp -= nextLevel(level: self.level)
             self.level += 1
         }
-        print(self.level)
         return hasLeveledUp
+    }
+    
+    // used for setting exp bonus
+    func distanceFromTask(taskLoc: Location) -> Double {
+        let homeLoc = MapViewController.locToCoord(location: home!)
+        let taskLoc = MapViewController.locToCoord(location: taskLoc)
+        return taskLoc.distance(from: homeLoc)/1000
     }
     
     func updateHomeLocation(newLoc: Location) {

@@ -36,6 +36,10 @@
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We need your location for tracking your tasks.</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>ShadowsIntoLight.ttf</string>
+	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

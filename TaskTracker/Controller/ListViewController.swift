@@ -44,8 +44,23 @@ class ListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tableViewCell", for: indexPath)
         cell.textLabel?.text = tasks[indexPath.row].name
-        cell.detailTextLabel?.text = "Streak: \(tasks[indexPath.row].streak)"
+        if tasks[indexPath.row].isDueToday() {
+            cell.detailTextLabel?.text = "Streak: \(tasks[indexPath.row].streak) (Due today!)"
+        } else {
+            cell.detailTextLabel?.text = "Streak: \(tasks[indexPath.row].streak)"
+        }
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        try? realm.write {
+            realm.delete(tasks[indexPath.row])
+            listViewTableView.deleteRows(at: [indexPath], with: .automatic)
+        }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
